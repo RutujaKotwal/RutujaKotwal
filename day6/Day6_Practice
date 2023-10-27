@@ -1,0 +1,398 @@
+Q.1.
+----------------------------------
+Developer
+---------------------------------
+
+package devpack;
+public interface Shape {
+	void draw();
+}
+
+
+public class Triangle implements Shape {
+	@Override
+	public void draw() {
+		
+		System.out.println("Triangle draw");
+	}
+}
+
+package devpack;
+
+public class Rectangle implements Shape{
+
+	@Override
+	public void draw() {
+		
+		System.out.println("Rectangle draw");
+	}
+
+}
+
+package devpack;
+
+public class Circle implements Shape{
+
+	@Override
+	public void draw() {
+		
+		System.out.println("Circle draw");
+	}
+
+}
+
+----------------------------------
+Client
+----------------------------------
+
+import devpack.*;
+
+public class ShapeDemo {
+	public static void main(String[] args) {
+		Shape s[] = {new Triangle(), new Circle(), new Rectangle()};
+		
+		for(int i = 0; i<s.length; i++) {
+			s[i].draw();
+		}
+	}
+}
+
+***************************************************************************************************************
+***************************************************************************************************************
+Q.2.
+
+package devpack;
+interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+
+class WindowGUIApp implements MouseHandler,WindowHandler
+{
+
+	@Override
+	public void windowClosing() {
+		// TODO Auto-generated method stub
+		System.out.println("windows closing");
+	}
+
+	@Override
+	public void windowClosed() {
+		// TODO Auto-generated method stub
+		System.out.println("windows closed");
+	}
+
+	@Override
+	public void mouseClicked() {
+		// TODO Auto-generated method stub
+		System.out.println("mouse clicked");
+	}
+
+	@Override
+	public void mousePressed() {
+		// TODO Auto-generated method stub
+		System.out.println("mouse pressed");
+	}
+
+	@Override
+	public void mouseReleased() {
+		// TODO Auto-generated method stub
+		System.out.println("mouse released");
+	}
+}
+public class GUIDemo {
+	public static void main(String[] args) {
+		WindowGUIApp w = new WindowGUIApp();
+		w.windowClosed();
+		w.windowClosing();
+		w.mouseClicked();
+		w.mousePressed();
+		w.mouseReleased();
+	}
+}
+
+***************************************************************************************************************
+***************************************************************************************************************
+Q.3.
+
+----------------------------------
+Developer
+----------------------------------
+package devpack2;
+
+/**
+ * @author Developer
+ *
+ */
+public interface PersistenceMechanism
+{
+	void writeData(String ref);
+	String readData();
+}
+
+----------------------------------
+Client
+----------------------------------
+package client2;
+
+import devpack2.PersistenceMechanism;
+
+/**
+ * @author Client
+ *
+ */
+public class FileSystem implements PersistenceMechanism {
+
+	@Override
+	public String readData() {
+		System.out.println("Read data ");
+		return null;
+	}
+
+	@Override
+	public void writeData(String arg0) {
+		
+		System.out.println("Write data ");
+	}
+
+}
+
+
+package client2;
+
+import devpack2.PersistenceMechanism;
+
+/**
+ * @author Client
+ *
+ */
+public class BigdataSystem implements PersistenceMechanism {
+
+	@Override
+	public String readData() {
+		System.out.println("Read data ");
+		return null;
+	}
+
+	@Override
+	public void writeData(String arg0) {
+		System.out.println("Write data ");
+		
+	}
+	
+}
+
+
+/**
+ * 
+ */
+package client2;
+
+import devpack2.PersistenceMechanism;
+
+/**
+ * @author Client
+ *
+ */
+public class DatabaseSystem implements PersistenceMechanism {
+
+	@Override
+	public String readData() {
+		System.out.println("Read data ");
+		return null;
+	}
+
+	@Override
+	public void writeData(String arg0) {
+		System.out.println("Write data ");
+		
+	}
+
+}
+
+/**
+ * 
+ */
+package client2;
+
+import devpack2.PersistenceMechanism;
+
+/**
+ * @author Client
+ *
+ */
+public class Demo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		PersistenceMechanism p[] = new PersistenceMechanism[3];
+		p[0]= new FileSystem();
+		p[1] = new DatabaseSystem();
+		p[2] = new BigdataSystem();
+		for (int i = 0; i < p.length; i++) {
+			p[i].readData();
+			p[i].writeData("hello");
+		}
+	}
+}
+
+***************************************************************************************************************
+***************************************************************************************************************
+Q.4.
+----------------------------------
+Developer
+---------------------------------
+
+package developer;
+
+/**
+ * @author developer
+ *
+ */
+public interface Vehicle {
+	 void changeGear(int a); 
+	 void speedUp(int a); 
+	 void applyBrakes(int a); 
+}
+
+----------------------------------
+Client
+---------------------------------
+
+package clientpro;
+
+import developer.Vehicle;
+
+class FourWheeler implements Vehicle
+ {
+
+	@Override
+	public void applyBrakes(int arg) {
+		System.out.println("FourWheeler Break...");
+		
+	}
+
+	@Override
+	public void changeGear(int arg) {
+		System.out.println("FourWheeler Change Gear");
+		
+	}
+
+	@Override
+	public void speedUp(int arg) {
+		System.out.println("FourWheeler Speed Up");
+		
+	}
+	
+}
+class TwoWheeler implements Vehicle{
+
+	@Override
+	public void applyBrakes(int arg) {
+		System.out.println("TwoWheeler Break...");
+		
+	}
+
+	@Override
+	public void changeGear(int arg) {
+		System.out.println("TwoWheeler Change Gear");
+		
+	}
+
+	@Override
+	public void speedUp(int arg) {
+		System.out.println("TwoWheeler Speed Up");
+		
+	}
+	
+}
+class Demo{
+	public static void perform(Vehicle ref) {
+		ref.speedUp(0);
+		ref.changeGear(0);
+		ref.applyBrakes(0);
+	}
+	public static void main(String[] args) {
+		perform(new TwoWheeler());
+		perform(new FourWheeler());
+	}
+}
+
+**********************************************************************************************************
+**********************************************************************************************************
+Q.5.
+package weaponpack;
+
+ class Weapon
+{
+	public void attack()
+	{
+	}
+}
+ class Sword extends Weapon
+{
+	 public void attack()
+		{
+		 System.out.println("Sword Attack");
+		}
+	 
+}
+ class Bomb extends Weapon
+{
+	 public void attack()
+		{
+		 System.out.println("Bomb Attack");
+		}
+
+}
+ class Gun extends Weapon
+{
+	 public void attack()
+		{
+		 System.out.println("Gun Attack");
+		}
+	public void fillBullets()
+	{
+		System.out.println("filling bullets");
+	}
+}
+
+ class Soldier
+{
+	// define "fight" method in such a way that given any specific weapon, it should be able to attack
+	public void fight(Weapon ref)
+	{
+		ref.attack();
+		if(ref instanceof Gun) {
+			Gun ref1 = (Gun)ref;
+			ref1.fillBullets();
+			
+		}
+		// make sure you invoke "fillBullets" also along with "attack" and that shouldn't give "ClassCastException"
+	}
+
+}
+public class WeaponDemo
+{
+	public static void main(String[]args)
+	{
+		//invoke "fight" method of Soldier class
+		Soldier s1=new Soldier();
+		s1.fight(new Gun());
+		
+	}
+}
+
+
+
+
+
