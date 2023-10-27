@@ -1,0 +1,268 @@
+
+/*
+1)create a class "Shape" with 2 attributes, "width" and "height". 
+ Make sure one can not access these attributes directly.
+provide accessor methods on these attributes and allow them to call from
+ outside of your class.
+*/
+package GrpA_Set2;
+
+import java.util.Scanner;
+ class Shape {
+	
+	private int Width;
+	private int Height;
+		public void SetWidth(int w) {
+			Width=w;
+		}
+		public void SetHeight(int h) {
+			Height = h;
+		}
+		public void GetWidth() {
+			System.out.println(Width);
+		}
+		public void GetHeight() {
+			System.out.println(Height);
+		}
+}
+		
+public class Accessor{
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		Shape A =new Shape();
+		A.SetWidth(23);
+		A.SetHeight(34);
+		A.GetWidth();
+		A.GetHeight();		
+	}
+	
+		
+		
+}
+
+
+/*	2) Define a class "MyClass" and make sure clients can instantiate it , 
+	a) without any argument
+	b) with one int argument
+	c) with two int arguments */
+package GrpA_Set2;
+
+public class MyClass {
+	
+	private	int num1;
+	private int num2;
+		
+		MyClass()
+		{
+			this.num1=0;
+			System.out.println(num1);
+		}
+		
+	MyClass(int a)
+	{
+		this.num1=a;
+		System.out.println(num1);
+	}
+	MyClass(int a,int b)
+	{
+		this.num1=a;
+		this.num2=b;
+		System.out.println(num1+num2);
+	}
+		
+	public static void main(String[] args) {
+
+		
+		MyClass s=new MyClass();
+		MyClass s1 = new MyClass(100);
+		MyClass s2= new MyClass(100,200);
+
+	}
+
+}
+
+//3) Define a class "Emp" with private static member "int cnt".
+//How will u make sure that outsiders can read the value of cnt ?
+
+package GrpA_Set2;
+public class Rutuja{
+	public static void main(String[] args) {
+		System.out.println(Emp.getCnt());
+	}
+	}
+		
+class Emp {
+	private static int cnt=54;
+	
+	public static int getCnt() {
+		return cnt;
+	}
+}
+
+/*
+4) Define a class "DemoOb". 
+create an instance of it.
+now create a reference and assign the reference created in the above statement.
+	Discuss what happens?
+Now since u have 2 references, take one of the reference and assign a new instance of the class.
+	Discuss what happens?
+(For ur discussion, write necessary comments in the program)
+*/
+package GrpA_Set2;
+
+//import java.util.Scanner;
+ class Demo {
+	 int num;
+	 
+	
+	
+	public static void main(String[] args) {
+		Demo D = new Demo();
+		Demo ref1= D;
+		ref1 = new Demo();
+	}
+
+	
+		
+		
+}
+
+
+/*5) Define 3 classes A , B and C
+in all these classes create static and nonstatic variables as well as methods.
+	Now Define a class "Demo" ,in which define "main" function. From this main 
+	function try to access all the members of A ,B  and C.
+*/
+package GrpA_Set2;
+class A{
+	public static int num=10;
+	int num1=21;
+	
+	static int disp (){
+		return num;
+	}
+	
+	 int disp1 (){
+		return num1;
+	}
+	
+}
+
+class B{
+	public static int num=11;
+	int num1=22;
+	
+	static int disp (){
+		return num;
+	}
+	
+	 int disp1 (){
+		return num1;
+	}
+	
+}
+
+class C{
+	public static int num=12;
+	int num1=23;
+	static int disp (){
+		return num;
+	}
+	
+	 int disp1 (){
+		return num1;
+	}
+}
+
+public class Demo {
+
+	public static void main(String[] args) {
+		A a=new A();
+		B b=new B();
+		C c=new C();
+		System.out.println(A.disp() +" "+ a.disp1() +" "+A.num+" "+a.num1);
+		System.out.println(B.disp() +" "+ b.disp1()+" "+B.num+" "+b.num1);
+		System.out.println(C.disp() +" "+ c.disp1()+" "+C.num+" "+c.num1);
+	
+	}
+
+}
+
+
+
+/*6) define static initializers in the above A,B and C
+  classes and check the order of their execution.
+*/
+package GrpA_Set2;
+class A{
+	public static int num=10;
+	int num1=21;
+	static
+	{
+		System.out.println("A Static");
+	}
+	
+	static int disp (){
+		return num;
+	}
+	
+	 int disp1 (){
+		return num1;
+	}
+	
+}
+
+class B{
+	public static int num=11;
+	int num1=22;
+	static
+	{
+		System.out.println("B Static");
+	}
+	
+	static int disp (){
+		return num;
+	}
+	
+	 int disp1 (){
+		return num1;
+	}
+	
+}
+
+class C{
+	public static int num=12;
+	int num1=23;
+	static
+	{
+		System.out.println("C Static");
+	}
+	static int disp (){
+		return num;
+	}
+	
+	 int disp1 (){
+		return num1;
+	}
+}
+
+public class Demo {
+	static
+	{
+	System.out.println("Demo static");
+	}
+	public static void main(String[] args) {
+		
+		System.out.println("in main static");
+		A a=new A();
+	
+		C c=new C();
+		B b=new B();
+		System.out.println(A.disp() +" "+ a.disp1() +" "+A.num+" "+a.num1);
+		System.out.println(B.disp() +" "+ b.disp1()+" "+B.num+" "+b.num1);
+		System.out.println(C.disp() +" "+ c.disp1()+" "+C.num+" "+c.num1);
+	
+	}
+
+}
+
