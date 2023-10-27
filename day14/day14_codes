@@ -1,4 +1,4 @@
-package Akash;
+
 
 /*
  * 1) define a functional interface "First" with an abstract method
@@ -34,7 +34,6 @@ public class Demo
 }
 
 
-package Akash;
 
 /*
  * 2) define a functional interface "Second" with an abstract method
@@ -62,7 +61,7 @@ public class Demo
 }
 
 
-package Akash;
+
 
 /*
  * 3) define a functional interface "MyInterface" with an abstract method
@@ -95,7 +94,6 @@ public class Demo
 
 
 
-package Akash;
 
 /*
  * 4) define a functional interface "Calculator" with an abstract method
@@ -130,7 +128,6 @@ public class CalcDemo
  * threads. make sure while one thread is executing other thread will not
  * interfere.
  */
-package Akash;
 
 public class Display
 {
