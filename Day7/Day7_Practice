@@ -1,0 +1,710 @@
+Q.1-
+public abstract class Course
+{
+	public void start()
+	{
+		System.out.println("Start Course");
+	}
+	public abstract double getFee();
+	public abstract void evaluate();
+}
+
+
+	class DACDBDACourse extends Course
+	{
+		int num = 112000;
+		public void start()
+		{
+		 System.out.println("start DAC & DBDA Course");
+		}
+		public double getFee()
+		{
+			System.out.println(num);
+			return num;
+		}
+		public  void evaluate()
+		{
+			System.out.println("evaluate DAC&DBDA");	
+		}
+		public  void Placement()
+		{
+			System.out.println("Placement of  DAC&DBDA");	
+		}
+		
+	}
+	class MSCitCourse extends Course
+	{
+		int num= 148000;
+		public void start()
+		{	
+			System.out.println("Start Mscit Course");
+		
+		}
+		public  double getFee()
+		{
+			System.out.println(num);
+			return num;
+		}
+		public  void evaluate()
+		{
+			System.out.println("evaluate Mscit");	
+		}
+	}
+
+
+public class MainMethod {
+
+	public static void perform(Course ref)
+	{
+		ref.start();
+		ref.getFee();
+		ref.evaluate();
+		if (ref instanceof DACDBDACourse)
+		{
+			DACDBDACourse ref1 = (DACDBDACourse)ref;
+			ref1.Placement();
+		}
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		perform(new DACDBDACourse());
+		perform(new MSCitCourse());
+
+	}
+
+}
+*****************************************************************************************************************
+Q.2-
+abstract class Beverages {
+
+	// Defined
+	public void addMilk() {
+		System.out.println("Add milk");
+	}
+
+	// abstract
+	abstract void addIngredients();
+}
+
+ class Coffee extends Beverages
+{
+	void addIngredients()
+	{
+		// ingredients for Coffee
+		System.out.println("Ingredients list of coffee:coffee,sugar");
+	}
+	// addMilk inherited
+	public void addMilk() {
+		System.out.println("Add milk in Coffee");
+	}
+	public void froth()
+	{
+		System.out.println("Froth coffee");
+	}
+}
+ class Tea extends Beverages
+{
+	void addIngredients()
+	{
+		// ingredients for Tea
+		System.out.println("Ingredients list of Tea:Tea,sugar,Lemongrass");
+	}
+	// addMilk inherited
+	public void addMilk() {
+		System.out.println("Add milk in Tea");
+	}
+}
+class FruitJuice extends Beverages
+{
+	void addIngredients()
+	{
+		// ingredients for FruitJuice
+		System.out.println("Ingredients list of FruitJuice:Fruit,sugar");
+		
+	}
+	// addMilk inherited
+	public void addMilk() {
+		System.out.println("Add milk in FruitJuice");
+	}
+}
+
+
+
+public class MainMethod {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Beverages arr[]= new Beverages[3];
+		arr[0]=new Coffee();
+		arr[1]=new Tea();
+		arr[2]=new FruitJuice();
+		for(int i =0;i<arr.length;i++) {
+			arr[i].addIngredients();
+			arr[i].addMilk();
+			if(arr[i] instanceof Coffee)
+			{
+				Coffee ref1Coffee=(Coffee)arr[i];
+				ref1Coffee.froth();
+			}
+		}
+		
+		
+
+	}
+
+}
+/*
+ * Create Array of Beverages class and store all the child classes objects. now
+ * traverse the array and invoke all the functions.
+ */
+************************************************************************************************************
+Q.3-
+public abstract class Shape
+{
+	abstract void draw();
+	void show()
+	{
+		System.out.println("Show Shape");
+	}
+}
+class Circle extends Shape
+{
+	public void draw() {
+		System.out.println("Draw Circle");
+	}
+	void show()
+	{
+		System.out.println("Show Circle");
+	}
+}
+class Triangle extends Shape
+{
+	public void draw() {
+		System.out.println("Draw Triangle");
+	}
+	void show()
+	{
+		System.out.println("Show Triangle");
+	}
+	int Sides()
+	{
+		int s=3;
+		System.out.println("Sides of Triangle are"+s);
+		return 0;
+		
+	}
+}
+class Square extends Shape
+{
+	public void draw() {
+		System.out.println("Draw Square");
+	}
+	void show()
+	{
+		System.out.println("Show Square");
+	}
+}
+
+
+public class MainMethod {
+
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Shape arr[]= new Shape[3];
+		arr[0]=new Circle();
+		arr[1]=new Triangle();
+		arr[2]=new Square();
+		for(int i = 0;i<arr.length;i++) {
+			arr[i].draw();
+			arr[i].show();
+			if(arr[i] instanceof Triangle)
+			{
+				Triangle ref = (Triangle)arr[i];
+				ref.Sides();
+			}
+		}
+		
+		
+
+	}
+
+}
+/*
+ * create abstract class "Shape" with a contract "draw()" and concrete behaviour
+ * "show()"
+ * 
+ * create 3 child classes Triangle, Rectangle and Circle
+ * 
+ * define a class "ShapeDemo" with main inside main create an array of "Shape"
+ * of 3 elements. Store all the child class objects inside the array, traverse
+ * it and invoke "draw()" and "show()" methods polymorphically.
+ */
+**************************************************************************************************************
+
+Abstract class Assignment 4
+
+package Com;
+public class UIComponent {
+
+}
+package Com;
+
+public class Button extends UIComponent {
+	Button(){
+		System.out.println(" button created");
+	}
+}
+package Com;
+
+public class TextField extends UIComponent{
+	TextField(){
+		System.out.println("TextField created");
+	}
+}
+package Com;
+
+public class CheckBox extends UIComponent {
+	CheckBox(){
+		System.out.println(" CheckBox created");
+	}
+}
+
+package Com;
+
+public abstract class UIComponentCreator
+{
+	public void show(String type)
+	{
+		UIComponent comp=createUIComponent(type);
+		add(comp);
+	}
+	
+	public void add(UIComponent component)
+	{
+		System.out.println("Added the component\t"+component);
+	}
+	
+	public abstract UIComponent createUIComponent(String type);
+
+}
+
+class WindowsUIComponentCreator extends UIComponentCreator{
+
+	
+	public UIComponent createUIComponent(String type) {
+		System.out.println("Windows components");
+		
+		if (type.equals("button")) {
+            return new Button();
+        } else if (type.equals("textfield")) {
+            return new TextField();
+        } else if (type.equals("checkbox")) {
+            return new CheckBox();
+        } else {
+            return null;
+        }
+	}
+	
+}
+
+class LinuxUIComponentCreator extends UIComponentCreator{
+
+	public UIComponent createUIComponent(String type) {
+		System.out.println("linux components");
+		if (type.equals("button")) {
+            return new Button();
+        } else if (type.equals("textfield")) {
+            return new TextField();
+        } else if (type.equals("checkbox")) {
+            return new CheckBox();
+        } else {
+            return null;
+        }
+	}
+	
+}
+
+class MacUIComponentCreator extends UIComponentCreator{
+
+	
+	public UIComponent createUIComponent(String type) {
+		
+		System.out.println("mac components");
+		if (type.equals("button")) {
+            return new Button();
+        } else if (type.equals("textfield")) {
+            return new TextField();
+        } else if (type.equals("checkbox")) {
+            return new CheckBox();
+        } else {
+            return null;
+        }
+	}
+	
+}
+
+package Com;
+
+public class UIComponentCreatorDemo {
+
+	public static void main(String[] args) {
+/*create objects of WindowsUIComponentCreator, LinuxUIComponentCreator 
+ * and MacUIComponentCreator classes and invoke 
+ * "createUIComponent()" ,"add()" and "show()" methods.
+*/
+	WindowsUIComponentCreator win = new WindowsUIComponentCreator();
+	win.show("button");
+	        
+	LinuxUIComponentCreator lin = new LinuxUIComponentCreator();
+	lin.show("textfield");
+	        
+	MacUIComponentCreator mac = new MacUIComponentCreator();
+	mac.show("checkbox");
+		
+	}
+
+}
+
+**************************************************************************************************************
+
+assignment 5:
+
+package java_Practice;
+
+public class Commandline {
+
+	public static void main(String[] args) {
+		int sum=0;
+		for(int i=0;i<args.length;i++)
+		sum+=Integer.parseInt(args[i]);
+		
+		System.out.println(sum);
+		
+		
+	}
+
+}
+**************************************************************************************************************
+assignment 6:
+
+Developer_Client Assignment for Shape 2
+-------------------------------------------------
+Developer
+-------------------------------------------------
+public interface Shape {
+	void draw();
+}
+
+public class Circle implements Shape{
+
+	@Override
+	public void draw() {
+		System.out.println("Draw Circle");
+		
+	}
+
+}
+
+public class Rectangle implements Shape {
+
+	@Override
+	public void draw() {
+		System.out.println();
+		System.out.println("Draw Rectangle");
+		
+	}
+
+}
+
+public class Triangle implements Shape {
+@Override
+	public void draw() {
+		System.out.println("Draw Triangle");
+		
+	}
+
+}
+
+======================================================================
+--------------------
+Client
+--------------------
+
+import devpack.*;
+
+public class ShapeDemo {
+	public static void perform(Shape shape) {
+		shape.draw();
+	}
+public static void main(String[] args) {
+	Shape s []= new Shape[3];
+	s[0]=new Triangle();
+s[1]=new Circle();
+	s[2]=new Rectangle();
+	for (int i = 0; i < s.length; i++) {
+		perform(s[i]);
+	}
+}
+}
+
+**************************************************************************************************************
+Interface Assignment
+public interface PizzaIngredientFactory
+{
+	public Dough createDough();
+	public Sauce createSauce();
+	public Cheese createCheese();
+	public Pepperoni createPepperoni();
+	public Clams createClams();
+}
+class Dough{
+	
+}
+class Sauce{
+	
+}
+class Cheese{
+	
+}
+class Pepperoni{
+	
+}
+class Clams{
+	
+}
+class USPizzaIngredientFactory implements PizzaIngredientFactory {
+	public Dough createDough() {
+		System.out.println("create Dough for USPizza");
+		return new Dough();	}
+	public Sauce createSauce() {
+		System.out.println("create Sauce for USPizza");
+		return new Sauce();
+	}
+	public Pepperoni createPepperoni() {
+		System.out.println("create Pepperoni for USPizza");
+		return new Pepperoni();
+	}
+	public Cheese createCheese() {
+		System.out.println("create Cheese for USPizza");
+		return new Cheese();
+	}
+	public Clams createClams() {
+		System.out.println("create Clams for USPizza");
+		return new Clams();
+	}
+}
+class IndianPizzaIngredientFactory implements PizzaIngredientFactory {
+	public Dough createDough() {
+		System.out.println("create Dough for IndiaPizza");
+		return new Dough();	}
+	public Sauce createSauce() {
+		System.out.println("create Sauce for IndiaPizza");
+		return new Sauce();
+	}
+	public Pepperoni createPepperoni() {
+		System.out.println("create Pepperoni for IndiaPizza");
+		return new Pepperoni();
+	}
+	public Cheese createCheese() {
+		System.out.println("create Cheese for IndiaPizza");
+		return new Cheese();
+	}
+	public Clams createClams() {
+		System.out.println("create Clams for IndiaPizza");
+		return new Clams();
+	}
+}
+
+*********************************************************************************************************
+
+
+upcasting downcasting assignment 1
+
+package java_Practice;
+class Course2
+{
+	public void start()
+	{
+	}
+	public void stop()
+	{
+	}
+}
+
+class DACDBDACourse1 extends Course2{
+	public void start()
+	{
+		System.out.println("DACDBDACourse started");
+	}
+	public void stop()
+	{
+		System.out.println("DACDBDACourse stop");
+	}
+	public void orientation()
+	{
+		System.out.println("Hello DACDBDACourse students");
+	}
+}
+
+class MSCit extends Course2{
+	public void start()
+	{
+		System.out.println("MSCit start");
+	}
+	public void stop()
+	{
+		System.out.println("MSCit stop");
+	}
+}
+
+class Basic extends Course2{
+	public void start()
+	{
+		System.out.println("Basic started");
+	}
+	public void stop()
+	{
+		System.out.println("Basic stop");
+	}
+}
+public class CourseDemo{
+	public static void main(String[] args) {
+		Course2[] Co=new Course2[3];
+		Co[0]=new DACDBDACourse1();
+		Co[1]=new MSCit();
+		Co[2]=new Basic();
+		 
+		 for(int i=0;i<Co.length;i++) {
+			 Co[i].start();
+			 if(Co[i] instanceof DACDBDACourse1 ) {
+				// ((DACDBDACourse1) Co[i]).orientation();
+				 DACDBDACourse1 ref1=(DACDBDACourse1)Co[i];
+				 ref1.orientation();
+			 }
+				 Co[i].stop();
+		 }
+		 
+	}
+}
+
+
+*********************************************************************************************************
+Upcasting_Downcasting Assignment 2
+
+interface Course
+{
+	void start();
+	void stop();
+}
+class DACDBDACourse implements Course
+{
+	public void start()
+	{
+	 System.out.println("start DAC & DBDA Course");
+	}
+	
+	public  void stop()
+	{
+		System.out.println("Stop  DAC&DBDA Course");	
+	}
+	void orientation()
+	{
+		System.out.println("Dac & DBDA Orientation");
+	}
+	
+}
+class MSCitCourse implements Course
+{
+	public void start()
+	{
+	 System.out.println("start MSCIT Course");
+	}
+	
+	public  void stop()
+	{
+		System.out.println("Stop MSCIT Course");	
+	}
+}
+class Basic implements Course
+{
+	public void start()
+	{
+	 System.out.println("start Basic Course");
+	}
+	
+	public  void stop()
+	{
+		System.out.println("Stop Basic Course");	
+	}
+	
+}
+
+
+
+public class MainMethod {
+	public static void show(Course ref) {
+		ref.start();
+		
+		if(ref instanceof DACDBDACourse)
+		{
+			DACDBDACourse ref1 = (DACDBDACourse)ref;
+			ref1.orientation();
+		}
+		ref.stop();
+	}
+	public static void main(String[] args) {
+		show(new DACDBDACourse());
+		show(new MSCitCourse());
+		show(new Basic());
+	}
+}
+
+
+//Interface Course
+//{
+//	void start();
+//	void stop();
+//}
+//now define 3 implementations: 
+//	DACDBDACourse,MSCit and Basic
+//
+//inside "DACDBDACourse" class define one more method "public void orientation()"
+//
+//define one more class "CourseDemo" with main function and "public static void show()" method.
+//from main function
+//	invoke "show()" method by passing object of any implementations and invoke "start()" and "stop()" methods. Also invoke "orientation()" method whenever object of "DACDBDACourse" is passed.
+
+*********************************************************************************************************
+
+assignment 8
+
+package java_Practice;
+
+class Demo2{
+	static int sum;
+	public int disp(int num) {
+		this.sum=sum+num;
+		
+		return this.sum;
+	}
+}
+public class assignment6 {
+
+	public static void main(String[] args) {
+	//create a class "Demo" with "disp()" which can take 
+	//variable number of int arguments and display the sum of 
+	//all numbers passed to it. invoke "disp()" from main function.
+		Demo2 d=new Demo2();
+		d.disp(20);
+		d.disp(30);
+		d.disp(50);
+		System.out.println(d.sum);
+		
+		
+	}
+
+}
